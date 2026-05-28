@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: 'Sarabun', sans-serif;
-            background-color: #f8fafc; /* slate-50 */
+            background-color: #fef2f2; /* red-50 */
         }
         .view { display: none; }
         .view.active { display: block; }
@@ -138,19 +138,16 @@
 
     <div id="app" class="container mx-auto p-4 md:p-6 lg:p-8 max-w-7xl">
 
-        <!-- Loading Spinner -->
-        <div id="loading-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div id="loading-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
             <div class="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-white"></div>
         </div>
         
-        <!-- Header for navigation -->
         <div id="main-header" class="mb-6 flex justify-between items-center hidden">
              <h1 class="clinic-name text-2xl font-bold text-indigo-600 cursor-pointer" id="home-button">คลินิกทันตกรรม</h1>
              <div id="header-actions"></div>
         </div>
 
-        <!-- Welcome View -->
-        <div id="welcome-view" class="view">
+        <div id="welcome-view" class="view active">
             <div class="bg-white p-8 md:p-12 rounded-3xl shadow-lg text-center max-w-4xl mx-auto">
                 <h1 class="clinic-name text-4xl md:text-5xl font-bold text-slate-800 mb-4">คลินิกทันตกรรมยินดีให้บริการ</h1>
                 <div id="announcement-section" class="mb-8 p-4 bg-indigo-50 border border-indigo-200 rounded-xl hidden">
@@ -183,7 +180,6 @@
             </div>
         </div>
         
-        <!-- News Board View -->
         <div id="news-board-view" class="view">
              <div class="bg-white p-8 rounded-2xl shadow-lg max-w-4xl mx-auto">
                  <div class="flex justify-between items-center mb-6">
@@ -191,12 +187,10 @@
                      <button id="news-back-to-home" class="text-indigo-600 hover:text-indigo-800 font-semibold">กลับหน้าหลัก</button>
                  </div>
                  <div id="news-list-container" class="space-y-6">
-                     <!-- News items will be injected here -->
-                 </div>
+                     </div>
              </div>
         </div>
 
-        <!-- Patient Booking View -->
         <div id="patient-booking-view" class="view">
              <div class="bg-white p-8 rounded-2xl shadow-lg max-w-2xl mx-auto">
                 <h2 class="text-3xl font-bold text-center text-slate-800 mb-8">จองคิวเข้ารับบริการ</h2>
@@ -249,14 +243,13 @@
             </div>
         </div>
         
-        <!-- Confirmation View -->
         <div id="confirmation-view" class="view">
             <div class="bg-white p-8 md:p-12 rounded-3xl shadow-lg text-center max-w-lg mx-auto">
                 <svg class="mx-auto h-16 w-16 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <h2 class="mt-6 text-3xl font-bold text-slate-800">จองคิวสำเร็จ!</h2>
-                <div class="mt-4 p-4 bg-red-100 border-l-4 red-amber-500 text-red-800 rounded-lg" role="alert">
+                <div class="mt-4 p-4 bg-red-100 border-l-4 border-red-500 text-red-800 rounded-lg" role="alert">
                     <div class="flex">
                         <div class="py-1">
                             <svg class="w-6 h-6 mr-4" fill="currentColor" viewBox="0 0 20 20">
@@ -271,14 +264,12 @@
                 </div>
                 
                 <div id="booking-details-display" class="mt-6 bg-slate-50 p-6 rounded-xl text-left space-y-2 border border-slate-200">
-                    <!-- Booking details will be injected here -->
-                </div>
+                    </div>
 
                  <button id="back-to-home-confirm" class="mt-8 w-full text-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-xl shadow-md hover:shadow-lg transition">กลับสู่หน้าหลัก</button>
             </div>
         </div>
 
-        <!-- Status Check View -->
         <div id="status-check-view" class="view">
              <div class="bg-white p-8 rounded-2xl shadow-lg max-w-lg mx-auto">
                 <h2 class="text-3xl font-bold text-center text-slate-800 mb-8">ตรวจสอบสถานะการจอง</h2>
@@ -294,7 +285,6 @@
             </div>
         </div>
         
-        <!-- Login & Register Views -->
         <div id="login-view" class="view">
              <div class="max-w-md mx-auto bg-white rounded-2xl shadow-lg p-8 mt-10">
                 <h2 class="text-3xl font-bold text-center text-slate-800">สำหรับเจ้าหน้าที่</h2>
@@ -314,10 +304,8 @@
             </div>
         </div>
 
-        <!-- Admin Dashboard View -->
         <div id="admin-dashboard-view" class="view">
             <div class="flex flex-col md:flex-row gap-6">
-                <!-- Sidebar -->
                 <aside class="md:w-64 bg-white/70 backdrop-blur-lg p-4 rounded-2xl shadow-lg flex flex-col">
                     <h2 id="admin-welcome" class="text-lg font-bold text-slate-800 mb-6 px-2 truncate"></h2>
                     <nav class="flex-grow">
@@ -352,23 +340,16 @@
                      </button>
                 </aside>
 
-                <!-- Main Content -->
                 <main class="flex-1 space-y-6">
-                    <!-- Overview/Analytics View -->
                     <div id="admin-overview-view" class="admin-view active"></div>
-                    <!-- Appointments Management View -->
                     <div id="admin-appointments-view" class="admin-view"></div>
-                    <!-- News Management View -->
                     <div id="admin-news-view" class="admin-view"></div>
-                    <!-- Inbox View -->
                     <div id="admin-inbox-view" class="admin-view"></div>
-                    <!-- Settings View -->
                     <div id="admin-settings-view" class="admin-view"></div>
                 </main>
             </div>
         </div>
         
-        <!-- Modals -->
         <div id="note-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center hidden p-4"></div>
         <div id="contact-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center hidden p-4"></div>
         <div id="confirm-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 flex items-center justify-center hidden p-4"></div>
@@ -384,13 +365,13 @@
 
         // --- Firebase Config ---
         const firebaseConfig = {
-            apiKey: "AIzaSyDKef562KlNGQ9TuBEzQGiIGXSOlR7eG-Q",
-            authDomain: "dentalclinicbooking-dc7c7.firebaseapp.com",
-            projectId: "dentalclinicbooking-dc7c7",
-            storageBucket: "dentalclinicbooking-dc7c7.appspot.com",
-            messagingSenderId: "37533271533",
-            appId: "1:37533271533:web:cd24aa3623fdd4b4ac53e4",
-            measurementId: "G-5F3J0314WQ"
+            apiKey: "AIzaSyAtOUoFJg_qcGdtMVgHLDAjK1gkk7rKQ7Q",
+            authDomain: "demotest-ab5b5.firebaseapp.com",
+            projectId: "demotest-ab5b5",
+            storageBucket: "demotest-ab5b5.firebasestorage.app",
+            messagingSenderId: "280787825559",
+            appId: "1:280787825559:web:10f97a5c92578a6b8a4ad2",
+            measurementId: "G-T1K3TMVXCV"
         };
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
@@ -411,6 +392,7 @@
         let currentDate = new Date();
         let selectedDateForBooking = null;
         let selectedTimeForBooking = null;
+        let unsubscribeDayAppointments = null;
         let noteModalApptId = null;
         let currentPage = 1;
         const itemsPerPage = 10;
@@ -453,6 +435,29 @@
         
         // --- Helper Functions ---
         const showLoading = (isLoading) => loadingOverlay.classList.toggle('hidden', !isLoading);
+        const getStatusInfo = (status) => {
+            const statuses = {
+                pending: { bg: 'bg-amber-100', text: 'text-amber-800' },
+                confirmed: { bg: 'bg-green-100', text: 'text-green-800' },
+                completed: { bg: 'bg-sky-100', text: 'text-sky-800' },
+                cancelled: { bg: 'bg-red-100', text: 'text-red-800' }
+            };
+            return statuses[status] || { bg: 'bg-slate-100', text: 'text-slate-800' };
+        };
+        const translateStatus = (status) => {
+            const translations = {
+                pending: 'รอการยืนยัน',
+                confirmed: 'ยืนยันแล้ว',
+                completed: 'เสร็จสิ้น',
+                cancelled: 'ยกเลิก'
+            };
+            return translations[status] || status;
+        };
+        const sanitizeHTML = (str) => {
+            const temp = document.createElement('div');
+            temp.textContent = str;
+            return temp.innerHTML;
+        };
         
         function showToast(message, isError = false) {
             const toast = document.createElement('div');
@@ -477,6 +482,7 @@
             document.querySelectorAll('.welcome-btn').forEach(el => el.className = cssClasses.welcomeBtn + ' ' + el.className);
             setupEventListeners();
             history.replaceState({ view: 'welcome-view' }, '', '#welcome-view');
+            await loadClinicConfig();
         });
         
         async function loadClinicConfig() {
@@ -487,7 +493,8 @@
                 if (configSnap.exists()) {
                     clinicConfig = { ...DEFAULT_CONFIG, ...configSnap.data() };
                 } else {
-                    await setDoc(configRef, DEFAULT_CONFIG);
+                    // This will only succeed if an admin is logged in, due to security rules
+                    await setDoc(configRef, DEFAULT_CONFIG).catch(() => {});
                     clinicConfig = DEFAULT_CONFIG;
                 }
             } catch (error) {
@@ -539,7 +546,11 @@
             const q = query(collection(db, "booked_slots"));
             unsubscribeBookedSlots = onSnapshot(q, (querySnapshot) => {
                 bookedSlots = [];
-                querySnapshot.forEach(doc => bookedSlots.push(doc.id));
+                querySnapshot.forEach(doc => {
+                    if (doc.data().cancelled !== true) {
+                        bookedSlots.push(doc.id);
+                    }
+                });
                 if (selectedDateForBooking) {
                     renderTimeSlots(selectedDateForBooking);
                 }
@@ -631,7 +642,9 @@
             timeSlotsContainer.classList.remove('hidden');
             timeSlotsGrid.innerHTML = '';
             
-            const dayBookedSlots = dateStr ? bookedSlots.filter(slotId => slotId.startsWith(dateStr)) : [];
+            const activeSlots = (window.dayAppointments || [])
+                .filter(appt => appt.status !== 'cancelled')
+                .map(appt => appt.time);
             
             if (!clinicConfig.availableTimeSlots || clinicConfig.availableTimeSlots.length === 0) {
                 timeSlotsGrid.innerHTML = '<p class="col-span-full text-slate-500">ไม่มีช่วงเวลาให้บริการ</p>';
@@ -641,8 +654,7 @@
             let hasSlot = false;
             clinicConfig.availableTimeSlots.forEach(timeString => {
                 hasSlot = true;
-                const slotId = `${dateStr}_${timeString.replace(':', '-')}`;
-                const isBooked = dayBookedSlots.includes(slotId);
+                const isBooked = activeSlots.includes(timeString);
                 let classes = 'time-slot p-2 border border-slate-200 rounded-lg text-center cursor-pointer font-medium';
                 if (isBooked) {
                     classes += ' disabled';
@@ -845,9 +857,9 @@
                     </div>
                 </div>`;
             modal.classList.remove('hidden');
-            document.getElementById('confirm-ok-btn').onclick = () => {
-                onConfirm();
+            document.getElementById('confirm-ok-btn').onclick = async () => {
                 modal.classList.add('hidden');
+                await onConfirm();
             };
             document.getElementById('confirm-cancel-btn').onclick = () => {
                 modal.classList.add('hidden');
@@ -903,8 +915,7 @@
                              <div>
                                  <label class="block text-sm font-medium text-slate-600 mb-2">เลือกช่วงเวลาที่เปิดให้บริการ (ช่วงละ 20 นาที)</label>
                                  <div id="time-slots-settings-grid" class="mt-2 grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-8 gap-2">
-                                     <!-- Time slots will be injected here -->
-                                 </div>
+                                     </div>
                              </div>
                          </div>
                          <div class="space-y-4">
@@ -1034,7 +1045,7 @@
             document.getElementById('status-back-to-home').addEventListener('click', goHome);
             document.getElementById('login-back-to-home').addEventListener('click', goHome);
 
-            document.body.addEventListener('click', (e) => {
+            document.body.addEventListener('click', async (e) => {
                 const modalCloseBtn = e.target.closest('.modal-close-btn');
                 if (modalCloseBtn) {
                     modalCloseBtn.closest('.fixed').classList.add('hidden');
@@ -1060,7 +1071,16 @@
                         const staffId = item.dataset.id;
                         const newName = input.value.trim();
                         if (newName) {
-                            updateDoc(doc(db, "users", staffId), { fullName: newName });
+                            showLoading(true);
+                            try {
+                                await updateDoc(doc(db, "users", staffId), { fullName: newName });
+                                showToast("แก้ไขชื่อเจ้าหน้าที่สำเร็จ");
+                            } catch (err) {
+                                console.error("Error updating staff name:", err);
+                                showToast("เกิดข้อผิดพลาดในการบันทึก", true);
+                            } finally {
+                                showLoading(false);
+                            }
                         }
                     } else { // Edit mode
                         input.removeAttribute('readonly');
@@ -1076,8 +1096,17 @@
                     showConfirmationModal(
                         'ยืนยันการลบ',
                         'คุณแน่ใจหรือไม่ว่าต้องการลบบัญชีเจ้าหน้าที่นี้? การกระทำนี้ไม่สามารถย้อนกลับได้',
-                        () => {
-                            deleteDoc(doc(db, "users", staffId));
+                        async () => {
+                            showLoading(true);
+                            try {
+                                await deleteDoc(doc(db, "users", staffId));
+                                showToast("ลบเจ้าหน้าที่สำเร็จ");
+                            } catch (err) {
+                                console.error("Error deleting staff:", err);
+                                showToast("เกิดข้อผิดพลาดในการลบเจ้าหน้าที่", true);
+                            } finally {
+                                showLoading(false);
+                            }
                         }
                     );
                 }
@@ -1097,102 +1126,40 @@
                         timeSlotSettingBtn.classList.add('active');
                     }
                 }
-            });
 
-            document.body.addEventListener('submit', (e) => {
-                if (e.target.id === 'login-form') handleLogin(e);
-                if (e.target.id === 'booking-form') handleBookingSubmit(e);
-                if (e.target.id === 'status-check-form') handleStatusCheck(e);
-                if (e.target.id === 'settings-form') handleSettingsSubmit(e);
-                if (e.target.id === 'contact-form') handleContactSubmit(e);
-                if (e.target.id === 'add-staff-form') handleAddStaff(e);
-                if (e.target.id === 'news-form') handleNewsSubmit(e);
-            });
-
-            document.getElementById('prev-month-btn').addEventListener('click', () => { currentDate.setMonth(currentDate.getMonth() - 1); renderCalendar(currentDate.getFullYear(), currentDate.getMonth()); });
-            document.getElementById('next-month-btn').addEventListener('click', () => { currentDate.setMonth(currentDate.getMonth() + 1); renderCalendar(currentDate.getFullYear(), currentDate.getMonth()); });
-            document.getElementById('calendar-grid').addEventListener('click', (e) => {
-                if (e.target.classList.contains('calendar-day') && !e.target.classList.contains('disabled')) {
-                    selectedDateForBooking = e.target.dataset.date;
-                    selectedTimeForBooking = null;
-                    renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
-                    renderTimeSlots(selectedDateForBooking);
-                }
-            });
-            document.getElementById('time-slots-grid').addEventListener('click', (e) => {
-                const button = e.target.closest('.time-slot');
-                if (button && !button.disabled) {
-                    selectedTimeForBooking = button.dataset.time;
-                    document.querySelectorAll('.time-slot').forEach(ts => ts.classList.remove('selected'));
-                    button.classList.add('selected');
-                }
-            });
-            const statusResultEl = document.getElementById('status-result');
-            if (statusResultEl) {
-                statusResultEl.addEventListener('click', async (e) => {
-                    if (e.target.id === 'patient-cancel-btn') {
-                        const apptId = e.target.dataset.id;
-                        const slotId = e.target.dataset.slotId;
-                         showConfirmationModal(
-                             'ยืนยันการยกเลิก',
-                             'คุณแน่ใจหรือไม่ว่าต้องการยกเลิกนัดหมายนี้?',
-                              async () => {
-                                 showLoading(true);
-                                 try {
-                                     await runTransaction(db, async (transaction) => {
-                                         const apptRef = doc(db, "appointments", apptId);
-                                         const slotRef = doc(db, "booked_slots", slotId);
-                                         transaction.update(apptRef, { status: 'cancelled' });
-                                         transaction.delete(slotRef);
-                                     });
-                                     statusResultEl.innerHTML = '<p class="text-green-600 text-center font-semibold">ยกเลิกนัดหมายสำเร็จแล้ว</p>';
-                                 } catch (error) {
-                                     console.error("Cancellation error:", error);
-                                     statusResultEl.innerHTML = '<p class="text-red-500 text-center font-semibold">เกิดข้อผิดพลาดในการยกเลิก</p>';
-                                 } finally {
-                                     showLoading(false);
-                                 }
-                             }
-                         );
-                    }
-                });
-            }
-            document.getElementById('admin-logout').addEventListener('click', () => signOut(auth));
-            const adminNav = document.querySelector('aside nav');
-            if(adminNav) {
-                adminNav.addEventListener('click', (e) => {
-                    const link = e.target.closest('.admin-nav-link');
-                    if (link) {
-                        e.preventDefault();
-                        currentPage = 1;
-                        document.querySelectorAll('.admin-nav-link').forEach(l => l.classList.remove('active'));
-                        link.classList.add('active');
-                        document.querySelectorAll('.admin-view').forEach(v => v.classList.remove('active'));
-                        document.getElementById(link.dataset.view + '-view').classList.add('active');
-                        if (link.dataset.view === 'admin-settings') populateSettingsForm();
-                        if (link.dataset.view === 'admin-appointments') renderAllAppointmentsTable();
-                        if (link.dataset.view === 'admin-inbox') renderInbox();
-                        if (link.dataset.view === 'admin-overview') renderAdminOverview();
-                        if (link.dataset.view === 'admin-news') renderAdminNews();
-                    }
-                });
-            }
-            document.body.addEventListener('click', (e) => {
                 const updateBtn = e.target.closest('.update-status-btn');
-                const noteIcon = e.target.closest('.note-icon');
-                const addBlockedDateBtn = e.target.id === 'add-blocked-date-btn';
-                const deleteBlockedDateBtn = e.target.closest('.delete-blocked-date-btn');
-                const addServiceBtn = e.target.id === 'add-service-btn';
-                const deleteServiceBtn = e.target.closest('.delete-service-btn');
-                const addTreatmentRightBtn = e.target.id === 'add-treatment-right-btn';
-                const deleteTreatmentRightBtn = e.target.closest('.delete-treatment-right-btn');
-                const deleteMessageBtn = e.target.closest('.delete-message-btn');
-                const saveNoteBtn = e.target.id === 'save-note-btn';
-                const exportCsvBtn = e.target.closest('#export-csv-btn');
-                const deleteNewsBtn = e.target.closest('.delete-news-btn');
+                if (updateBtn) {
+                    const apptId = updateBtn.dataset.id;
+                    const newStatus = updateBtn.dataset.status;
+                    
+                    showLoading(true);
+                    try {
+                        await updateDoc(doc(db, "appointments", apptId), { status: newStatus });
+                        if (newStatus === 'cancelled') {
+                            const appt = allAppointments.find(a => a.id === apptId);
+                            if (appt) {
+                                const slotId = `${appt.date}_${appt.time.replace(':', '-')}`;
+                                try {
+                                    await deleteDoc(doc(db, "booked_slots", slotId));
+                                } catch (err) {
+                                    console.warn("Admin delete slot failed, trying update:", err);
+                                    await updateDoc(doc(db, "booked_slots", slotId), { cancelled: true }).catch(console.error);
+                                }
+                            }
+                        }
+                        showToast(`อัปเดตสถานะเป็น "${translateStatus(newStatus)}" สำเร็จ`);
+                    } catch (error) {
+                        console.error("Error updating status:", error);
+                        showToast("เกิดข้อผิดพลาดในการอัปเดตสถานะ", true);
+                    } finally {
+                        showLoading(false);
+                    }
+                }
 
-                if (updateBtn) updateDoc(doc(db, "appointments", updateBtn.dataset.id), { status: updateBtn.dataset.status });
+                const noteIcon = e.target.closest('.note-icon');
                 if (noteIcon) openNoteModal(noteIcon.dataset.id, noteIcon.dataset.note);
+                
+                const addServiceBtn = e.target.id === 'add-service-btn';
                 if (addServiceBtn) {
                     const input = document.getElementById('new-service-input');
                     if (input && input.value.trim()) {
@@ -1201,11 +1168,15 @@
                         renderServicesList();
                     }
                 }
+                
+                const deleteServiceBtn = e.target.closest('.delete-service-btn');
                 if (deleteServiceBtn) {
                     const index = deleteServiceBtn.dataset.index;
                     clinicConfig.services.splice(index, 1);
                     renderServicesList();
                 }
+                
+                const addTreatmentRightBtn = e.target.id === 'add-treatment-right-btn';
                 if (addTreatmentRightBtn) {
                     const input = document.getElementById('new-treatment-right-input');
                     if (input && input.value.trim()) {
@@ -1215,11 +1186,15 @@
                         renderTreatmentRightsList();
                     }
                 }
+                
+                const deleteTreatmentRightBtn = e.target.closest('.delete-treatment-right-btn');
                 if (deleteTreatmentRightBtn) {
                     const index = deleteTreatmentRightBtn.dataset.index;
                     clinicConfig.treatmentRights.splice(index, 1);
                     renderTreatmentRightsList();
                 }
+                
+                const addBlockedDateBtn = e.target.id === 'add-blocked-date-btn';
                 if (addBlockedDateBtn) {
                      const dateInput = document.getElementById('new-blocked-date-input');
                     if (dateInput && dateInput.value && !clinicConfig.blockedDates.includes(dateInput.value)) {
@@ -1228,26 +1203,63 @@
                     }
                     if(dateInput) dateInput.value = '';
                 }
+                
+                const deleteBlockedDateBtn = e.target.closest('.delete-blocked-date-btn');
                 if(deleteBlockedDateBtn) {
                     const date = deleteBlockedDateBtn.dataset.date;
                     clinicConfig.blockedDates = clinicConfig.blockedDates.filter(d => d !== date);
                     renderBlockedDatesList();
                 }
+                
+                const deleteMessageBtn = e.target.closest('.delete-message-btn');
                 if (deleteMessageBtn) {
-                    showConfirmationModal('ยืนยันการลบ', 'คุณแน่ใจหรือไม่ว่าต้องการลบข้อความนี้?', () => {
-                        deleteDoc(doc(db, "messages", deleteMessageBtn.dataset.id));
+                    showConfirmationModal('ยืนยันการลบ', 'คุณแน่ใจหรือไม่ว่าต้องการลบข้อความนี้?', async () => {
+                        showLoading(true);
+                        try {
+                            await deleteDoc(doc(db, "messages", deleteMessageBtn.dataset.id));
+                            showToast("ลบข้อความสำเร็จ");
+                        } catch (err) {
+                            console.error("Error deleting message:", err);
+                            showToast("เกิดข้อผิดพลาดในการลบข้อความ", true);
+                        } finally {
+                            showLoading(false);
+                        }
                     });
                 }
+                
+                const saveNoteBtn = e.target.id === 'save-note-btn';
                 if (saveNoteBtn) {
                     const note = document.getElementById('note-textarea').value;
-                    updateDoc(doc(db, "appointments", noteModalApptId), { note: note });
-                    document.getElementById('note-modal').classList.add('hidden');
+                    showLoading(true);
+                    try {
+                        await updateDoc(doc(db, "appointments", noteModalApptId), { note: note });
+                        document.getElementById('note-modal').classList.add('hidden');
+                        showToast("บันทึกหมายเหตุสำเร็จ");
+                    } catch (error) {
+                        console.error("Error saving note:", error);
+                        showToast("เกิดข้อผิดพลาดในการบันทึก", true);
+                    } finally {
+                        showLoading(false);
+                    }
                 }
+                
+                const exportCsvBtn = e.target.closest('#export-csv-btn');
                 if(exportCsvBtn) exportToCsv();
+                
+                const deleteNewsBtn = e.target.closest('.delete-news-btn');
                 if(deleteNewsBtn) {
                     const newsId = deleteNewsBtn.dataset.id;
-                     showConfirmationModal('ยืนยันการลบ', 'คุณแน่ใจหรือไม่ว่าต้องการลบข่าวนี้?', () => {
-                         deleteDoc(doc(db, "news", newsId));
+                     showConfirmationModal('ยืนยันการลบ', 'คุณแน่ใจหรือไม่ว่าต้องการลบข่าวนี้?', async () => {
+                         showLoading(true);
+                         try {
+                             await deleteDoc(doc(db, "news", newsId));
+                             showToast("ลบข่าวประชาสัมพันธ์สำเร็จ");
+                         } catch (error) {
+                             console.error("Error deleting news:", error);
+                             showToast("เกิดข้อผิดพลาดในการลบ", true);
+                         } finally {
+                             showLoading(false);
+                         }
                     });
                 }
 
@@ -1272,29 +1284,112 @@
                     clinicConfig.treatmentRights[index] = e.target.value.trim();
                 }
             });
+            document.body.addEventListener('submit', (e) => {
+                if (e.target.id === 'login-form') handleLogin(e);
+                if (e.target.id === 'booking-form') handleBookingSubmit(e);
+                if (e.target.id === 'status-check-form') handleStatusCheck(e);
+                if (e.target.id === 'settings-form') handleSettingsSubmit(e);
+                if (e.target.id === 'contact-form') handleContactSubmit(e);
+                if (e.target.id === 'add-staff-form') handleAddStaff(e);
+                if (e.target.id === 'news-form') handleNewsSubmit(e);
+            });
+
+            document.getElementById('prev-month-btn').addEventListener('click', () => { currentDate.setMonth(currentDate.getMonth() - 1); renderCalendar(currentDate.getFullYear(), currentDate.getMonth()); });
+            document.getElementById('next-month-btn').addEventListener('click', () => { currentDate.setMonth(currentDate.getMonth() + 1); renderCalendar(currentDate.getFullYear(), currentDate.getMonth()); });
+            document.getElementById('calendar-grid').addEventListener('click', (e) => {
+                if (e.target.classList.contains('calendar-day') && !e.target.classList.contains('disabled')) {
+                    selectedDateForBooking = e.target.dataset.date;
+                    selectedTimeForBooking = null;
+                    renderCalendar(currentDate.getFullYear(), currentDate.getMonth());
+                    
+                    if (unsubscribeDayAppointments) unsubscribeDayAppointments();
+                    
+                    showLoading(true);
+                    const q = query(collection(db, "appointments"), where("date", "==", selectedDateForBooking));
+                    unsubscribeDayAppointments = onSnapshot(q, (snap) => {
+                        window.dayAppointments = snap.docs.map(doc => doc.data());
+                        renderTimeSlots(selectedDateForBooking);
+                        showLoading(false);
+                    }, (err) => {
+                        console.error("Error listening to day appointments:", err);
+                        window.dayAppointments = [];
+                        renderTimeSlots(selectedDateForBooking);
+                        showLoading(false);
+                    });
+                }
+            });
+            document.getElementById('time-slots-grid').addEventListener('click', (e) => {
+                const button = e.target.closest('.time-slot');
+                if (button && !button.disabled) {
+                    selectedTimeForBooking = button.dataset.time;
+                    document.querySelectorAll('.time-slot').forEach(ts => ts.classList.remove('selected'));
+                    button.classList.add('selected');
+                }
+            });
+            const statusResultEl = document.getElementById('status-result');
+            if (statusResultEl) {
+                statusResultEl.addEventListener('click', async (e) => {
+                    if (e.target.id === 'patient-cancel-btn') {
+                        const apptId = e.target.dataset.id;
+                        const slotId = e.target.dataset.slotId;
+                         showConfirmationModal(
+                             'ยืนยันการยกเลิก',
+                             'คุณแน่ใจหรือไม่ว่าต้องการยกเลิกนัดหมายนี้?',
+                              async () => {
+                                  showLoading(true);
+                                  try {
+                                      const apptRef = doc(db, "appointments", apptId);
+                                      await updateDoc(apptRef, { status: 'cancelled' });
+                                      
+                                      if (slotId) {
+                                          try {
+                                              await deleteDoc(doc(db, "booked_slots", slotId));
+                                          } catch (delErr) {
+                                              console.warn("Delete slot failed, trying update:", delErr);
+                                              try {
+                                                  await updateDoc(doc(db, "booked_slots", slotId), { cancelled: true });
+                                              } catch (updErr) {
+                                                  console.error("Update slot also failed:", updErr);
+                                              }
+                                          }
+                                      }
+
+                                      statusResultEl.innerHTML = '<p class="text-green-600 text-center font-semibold">ส่งคำขอยกเลิกนัดหมายสำเร็จแล้ว</p>';
+                                      showToast("ส่งคำขอยกเลิกนัดหมายสำเร็จ");
+                                  } catch (error) {
+                                      console.error("Cancellation error:", error);
+                                      statusResultEl.innerHTML = `<p class="text-red-500 text-center font-semibold">เกิดข้อผิดพลาดในการยกเลิก: ${error.message}</p>`;
+                                      showToast("เกิดข้อผิดพลาดในการยกเลิก", true);
+                                  } finally {
+                                      showLoading(false);
+                                  }
+                              }
+                         );
+                    }
+                });
+            }
+            document.getElementById('admin-logout').addEventListener('click', () => signOut(auth));
+            const adminNav = document.querySelector('aside nav');
+            if(adminNav) {
+                adminNav.addEventListener('click', (e) => {
+                    const link = e.target.closest('.admin-nav-link');
+                    if (link) {
+                        e.preventDefault();
+                        currentPage = 1;
+                        document.querySelectorAll('.admin-nav-link').forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                        document.querySelectorAll('.admin-view').forEach(v => v.classList.remove('active'));
+                        document.getElementById(link.dataset.view + '-view').classList.add('active');
+                        if (link.dataset.view === 'admin-settings') populateSettingsForm();
+                        if (link.dataset.view === 'admin-appointments') renderAllAppointmentsTable();
+                        if (link.dataset.view === 'admin-inbox') renderInbox();
+                        if (link.dataset.view === 'admin-overview') renderAdminOverview();
+                        if (link.dataset.view === 'admin-news') renderAdminNews();
+                    }
+                });
+            }
         }
-        async function handleLogin(e) { 
-            e.preventDefault(); 
-            showLoading(true); 
-            const errEl = document.getElementById('login-error'); 
-            errEl.textContent = ''; 
-            try { 
-                const userCredential = await signInWithEmailAndPassword(auth, document.getElementById('login-email').value, document.getElementById('login-password').value); 
-                const user = userCredential.user; 
-                const userDocRef = doc(db, "users", user.uid); 
-                const userDoc = await getDoc(userDocRef); 
-                if (userDoc.exists() && userDoc.data().role === 'staff') { 
-                    // Success, onAuthStateChanged will handle UI switch
-                } else { 
-                    await signOut(auth); 
-                    errEl.textContent = "บัญชีนี้ไม่มีสิทธิ์ในการเข้าถึง"; 
-                } 
-            } catch (error) { 
-                errEl.textContent = "อีเมลหรือรหัสผ่านไม่ถูกต้อง"; 
-            } finally { 
-                showLoading(false); 
-            } 
-        }
+        async function handleLogin(e) { e.preventDefault(); showLoading(true); const errEl = document.getElementById('login-error'); errEl.textContent = ''; try { const userCredential = await signInWithEmailAndPassword(auth, document.getElementById('login-email').value, document.getElementById('login-password').value); const user = userCredential.user; const userDocRef = doc(db, "users", user.uid); const userDoc = await getDoc(userDocRef); if (userDoc.exists() && userDoc.data().role === 'staff') { /* Success, onAuthStateChanged will handle UI */ } else { await signOut(auth); errEl.textContent = "บัญชีนี้ไม่มีสิทธิ์ในการเข้าถึง"; } } catch (error) { errEl.textContent = "อีเมลหรือรหัสผ่านไม่ถูกต้อง"; } finally { showLoading(false); } }
         async function handleAddStaff(e) {
             e.preventDefault();
             const errEl = document.getElementById('add-staff-error');
@@ -1354,39 +1449,45 @@
             showLoading(true);
 
             try {
+                const qCheck = query(collection(db, "appointments"), where("date", "==", selectedDateForBooking), where("time", "==", selectedTimeForBooking), where("status", "in", ["pending", "confirmed", "completed"]));
+                const checkSnap = await getDocs(qCheck);
+                if (!checkSnap.empty) {
+                    msgEl.textContent = 'ขออภัย เวลานี้ถูกจองไปแล้ว กรุณาเลือกเวลาอื่น';
+                    showLoading(false);
+                    return;
+                }
+
                 const q = query(collection(db, "appointments"), where("date", "==", selectedDateForBooking));
                 const querySnapshot = await getDocs(q);
                 const queueNumber = querySnapshot.size + 1;
 
-                const slotId = `${selectedDateForBooking}_${selectedTimeForBooking.replace(':', '-')}`;
-                const slotRef = doc(db, "booked_slots", slotId);
+                const bookingId = Math.floor(100000 + Math.random() * 900000).toString();
+                
+                const newAppointmentRef = doc(collection(db, "appointments"));
+                const appointmentData = { 
+                    bookingId: bookingId, 
+                    queueNumber: queueNumber,
+                    patientName, 
+                    patientContact, 
+                    patientAge,
+                    service: document.getElementById('service').value, 
+                    treatmentRight: document.getElementById('treatment-right').value,
+                    date: selectedDateForBooking, 
+                    time: selectedTimeForBooking, 
+                    status: 'pending', 
+                    createdAt: serverTimestamp(), 
+                    createdOnDate: new Date().toISOString().split('T')[0], 
+                    note: "" 
+                };
+                
+                await setDoc(newAppointmentRef, appointmentData);
+                
+                try {
+                    const slotId = `${selectedDateForBooking}_${selectedTimeForBooking.replace(':', '-')}`;
+                    await setDoc(doc(db, "booked_slots", slotId), { appointmentId: newAppointmentRef.id });
+                } catch(e) { console.warn("Could not sync with booked_slots", e); }
 
-                await runTransaction(db, async (transaction) => {
-                    const slotDoc = await transaction.get(slotRef);
-                    if (slotDoc.exists()) { throw "Slot already booked"; }
-                    
-                    const bookingId = Math.floor(100000 + Math.random() * 900000).toString();
-                    
-                    const newAppointmentRef = doc(collection(db, "appointments"));
-                    const appointmentData = { 
-                        bookingId: bookingId, 
-                        queueNumber: queueNumber,
-                        patientName, 
-                        patientContact, 
-                        patientAge,
-                        service: document.getElementById('service').value, 
-                        treatmentRight: document.getElementById('treatment-right').value,
-                        date: selectedDateForBooking, 
-                        time: selectedTimeForBooking, 
-                        status: 'pending', 
-                        createdAt: serverTimestamp(), 
-                        createdOnDate: new Date().toISOString().split('T')[0], 
-                        note: "" 
-                    };
-                    transaction.set(newAppointmentRef, appointmentData);
-                    transaction.set(slotRef, { appointmentId: newAppointmentRef.id });
-
-                    const bookingDetailsContainer = document.getElementById('booking-details-display');
+                const bookingDetailsContainer = document.getElementById('booking-details-display');
                     bookingDetailsContainer.innerHTML = `
                         <p><strong>รหัสจองคิว:</strong> <span class="font-mono text-lg font-bold text-indigo-600">${bookingId}</span></p>
                         <p><strong>หมายเลขคิว:</strong> <span class="font-bold text-lg">${queueNumber}</span></p>
@@ -1401,7 +1502,6 @@
                         <hr class="my-2 border-slate-200">
                         <p class="text-sm text-center text-slate-600 mt-4">กรุณามาตามวันและเวลาที่จอง<br>หากมีข้อสงสัย โทร. ${clinicConfig.contactPhone}</p>
                     `;
-                });
                 showView('confirmation-view');
                 document.getElementById('booking-form').reset();
                 selectedDateForBooking = null;
@@ -1539,13 +1639,6 @@
             }
             showLoading(false);
         });
-        function getStatusInfo(status) { switch (status) { case 'pending': return { bg: 'bg-amber-100', text: 'text-amber-800' }; case 'confirmed': return { bg: 'bg-green-100', text: 'text-green-800' }; case 'completed': return { bg: 'bg-sky-100', text: 'text-sky-800' }; case 'cancelled': return { bg: 'bg-red-100', text: 'text-red-800' }; default: return { bg: 'bg-slate-100', text: 'text-slate-800' }; } }
-        function translateStatus(status) { switch (status) { case 'pending': return 'รอการยืนยัน'; case 'confirmed': return 'ยืนยันแล้ว'; case 'completed': return 'เสร็จสิ้น'; case 'cancelled': return 'ยกเลิก'; default: return status; } }
-        function sanitizeHTML(str) {
-            const temp = document.createElement('div');
-            temp.textContent = str;
-            return temp.innerHTML;
-        }
         function exportToCsv() {
             const headers = ["Booking ID", "Patient Name", "Contact", "Service", "Treatment Right", "Date", "Time", "Status", "Note"];
             const rows = allAppointments.map(appt => [
